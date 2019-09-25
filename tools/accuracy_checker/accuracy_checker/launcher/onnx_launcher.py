@@ -72,9 +72,8 @@ class ONNXLauncher(Launcher):
         for infer_input in inputs:
             prediction_list = self._inference_session.run(self.output_names, infer_input)
             results.append(dict(zip(self.output_names, prediction_list)))
-            if metadata is not None:
-                for meta_ in metadata:
-                    meta_['input_shape'] = self.inputs_info_for_meta()
+            for meta_ in metadata:
+                meta_['input_shape'] = self.inputs_info_for_meta()
 
         return results
 
